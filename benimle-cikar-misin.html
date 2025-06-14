@@ -1,0 +1,96 @@
+
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Benimle Çıkar mısın?</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      height: 100vh;
+      margin: 0;
+      background-color: #ffe6e6;
+      overflow: hidden;
+      padding: 20px;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      color: #b30000;
+      margin-bottom: 40px;
+    }
+
+    .buttons {
+      display: flex;
+      flex-direction: row;
+      gap: 20px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    button {
+      padding: 15px 30px;
+      font-size: 1.2rem;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    #yes {
+      background-color: #ff4d4d;
+      color: white;
+    }
+
+    #no {
+      background-color: #cccccc;
+      color: #333;
+      position: absolute;
+    }
+
+    @keyframes pop {
+      0% { transform: scale(0); }
+      100% { transform: scale(1); }
+    }
+  </style>
+</head>
+<body>
+  <h1>Benimle çıkar mısın? 💕</h1>
+  <div class="buttons">
+    <button id="yes">Evet</button>
+    <button id="no">Hayır</button>
+  </div>
+
+  <script>
+    const noBtn = document.getElementById('no');
+    const yesBtn = document.getElementById('yes');
+
+    function moveButton() {
+      const x = Math.random() * (window.innerWidth - 100);
+      const y = Math.random() * (window.innerHeight - 100);
+      noBtn.style.left = `${x}px`;
+      noBtn.style.top = `${y}px`;
+    }
+
+    noBtn.addEventListener('mouseenter', moveButton);
+    noBtn.addEventListener('touchstart', moveButton); // mobil için dokunma olayı
+
+    yesBtn.addEventListener('click', () => {
+      document.body.innerHTML = `
+        <h1 style="color: #b30000; font-size: 2.5rem;">Yaşasın! ❤️</h1>
+        <p style="font-size: 1.5rem;">Artık sevgiliyiz 🥰</p>
+        <div style="font-size: 3rem;">🎉🎉🎉</div>
+      `;
+    });
+  </script>
+</body>
+</html>
